@@ -1,5 +1,5 @@
 # Advent of Code 2020
-# --- Day 2: Password Philosophy ---
+# --- Day 3: Toboggan Trajectory ---
 
 def part1(lines):
 
