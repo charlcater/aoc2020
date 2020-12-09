@@ -30,20 +30,20 @@ def part2(entries):
             d[key] = val
 
         if (len(d) == 8) or (len(d) == 7 and 'cid' not in d):
-            if (int(d.get('byr')) >= 1920 and int(d.get('byr')) <= 2002):
+            if (1920 <= int(d['byr']) <= 2002):
                 # print('byr: {}'.format(d.get('byr')))
-                if (int(d.get('iyr')) >= 2010 and int(d.get('iyr')) <= 2020):
+                if (2010 <= int(d['iyr']) <= 2020):
                     # print('iyr: {}'.format(d.get('iyr')))
-                    if (int(d.get('eyr')) >= 2020 and int(d.get('eyr')) <= 2030):
+                    if (2020 <= int(d['eyr']) <= 2030):
                         # print('eyr: {}'.format(d.get('eyr')))
-                        if ((( 'cm' in d.get('hgt')) and ( int(d.get('hgt').strip('cm')) >= 150 and int(d.get('hgt').strip('cm')) <= 193)) \
-                            or (( 'in' in d.get('hgt')) and ( int(d.get('hgt').strip('in')) >= 59 and int(d.get('hgt').strip('in')) <= 76))):
+                        if ( 'cm' in d['hgt'] and ( 150 <= int(d['hgt'].strip('cm')) <= 193)) \
+                            or ( 'in' in d['hgt'] and ( 59 <= int(d['hgt'].strip('in')) <= 76)):
                             # print('hgt: {}'.format(d.get('hgt')))
-                            if (d.get('hcl').strip('#').isalnum() and len(d.get('hcl')) == 7):
+                            if (d['hcl'].strip('#').isalnum() and len(d['hcl']) == 7):
                                 # print('hcl: {}'.format(d.get('hcl'))
-                                if (d.get('ecl') in eyecol):
+                                if (d['ecl'] in eyecol):
                                     # print('ecl: {}'.format(d.get('ecl')))
-                                    if (len(d.get('pid')) == 9):
+                                    if (len(d['pid']) == 9):
                                         # print('pid: {}'.format(d.get('pid')))
                                         valid += 1
         else:
