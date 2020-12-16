@@ -38,8 +38,8 @@ def part2(groups):
                     lettercount += 1
             if lettercount == len(groupanswers):
                 count += 1
-            print(a, lettercount)
-        print('') 
+            # print(a, lettercount)
+        # print('') 
 
     return count
     
