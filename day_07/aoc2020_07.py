@@ -45,7 +45,6 @@ def get_bags(d, bag_col):
 
     total = 1
     for col, num in d[bag_col].items():
-        x = d[bag_col]
         total += int(num) * int(get_bags(d, col))
 
     return total
