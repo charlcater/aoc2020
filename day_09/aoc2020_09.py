@@ -1,28 +1,48 @@
 # Advent of Code 2020
 # --- Day 9: Encoding Error ---
 
-def part1(numlist):
+def two_sum(nums, target):
+    compls = set()
 
-    i = 0
-    low = 0
-    high = 25
+    for x in nums:
+        if x in compls:
+            return True
 
-    for number in numlist[high:]:
-        for n in numlist[low+i:high+i]:
-            valid = 0
-            nn = number - n
+        compls.add(target - x)
 
-            if nn > 0 and nn in numlist[low+i:high+i]:
-                # print('{} is valid'.format(number))
-                valid = 1
-                i += 1
-                break
-            else:
-                pass
+    return False
+
+
+def part1(nums):
+
+    # more efficient solution, O(n)
+    for i, target in enumerate(nums[25:]):
+        if not two_sum(nums[i:i + 25], target):
+            break
+
+    return target
+
+    # this is quadrtic time
+    # i = 0
+    # low = 0
+    # high = 25
+
+    # for number in numlist[high:]:
+    #     for n in numlist[low+i:high+i]:
+    #         valid = 0
+    #         nn = number - n
+
+    #         if nn > 0 and nn in numlist[low+i:high+i]:
+    #             # print('{} is valid'.format(number))
+    #             valid = 1
+    #             i += 1
+    #             break
+    #         else:
+    #             pass
             
-        if valid == 0:
-            # print('invalid: {}'.format(number))
-            return(number)
+    #     if valid == 0:
+    #         # print('invalid: {}'.format(number))
+    #         return(number)
 
 
 def part2(number, numbers):
@@ -51,7 +71,7 @@ def part2(number, numbers):
                 doSum = False
 
 
-numlist = [int(entry.strip('\n')) for entry in open("input.txt", "r").readlines()]
-number = part1(numlist)
-print('Part 1: first invalid number = {}'.format(number))
-print('Part 2: encryption weakness = {}'.format(part2(number, numlist)))
+nums = [int(entry.strip('\n')) for entry in open("input.txt", "r").readlines()]
+
+print('Part 1: first invalid number = {}'.format(part1(nums)))
+print('Part 2: encryption weakness = {}'.format(part2(part1(nums), nums)))
